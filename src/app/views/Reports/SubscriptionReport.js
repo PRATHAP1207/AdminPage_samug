@@ -137,22 +137,19 @@ export default function SubscriptionReport() {
                             }}
                             required
                             select
+                           // defaultValue="india"
                             SelectProps={{ native: true }}
                            value={reportSubscribe.countryIdList}
                             variant="outlined"
                         >
-                           
-                            {CountryInputList.countryList.map((option) => (
-                             option.id == 101 &&
-                             <option key={option.id} value={option.id}>
-                               {option.name}
-                           </option>,
-                                option.id != 0 &&
-                                <option key={option.id} value={option.id}>
-                                    {option.name}
-                                </option>
-                                
-                            ))}
+                            
+                             {CountryInputList.countryList.map((option) => (
+                        option.id != 0 && 
+                        <option key={option.id} value={option.id}>
+                            {option.name}
+                        </option>
+                        
+                    ))}
                         </TextField>
                     </Grid>
                     <Grid item xs style={{ margin: '15px' }}>

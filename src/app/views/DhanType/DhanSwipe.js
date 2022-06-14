@@ -180,7 +180,7 @@ class DhanSwipe extends Component {
             >
               <Icon fontSize="large">picture_as_pdf</Icon>PDF
             </Button>} */}
-          {this.state.OpenTheCard == true &&
+          {/* {this.state.OpenTheCard == true &&
             <ReactToPrint
               trigger={() => (
                 <a href="/PrintOutDhanSwipe" target="_blank">
@@ -198,7 +198,7 @@ class DhanSwipe extends Component {
                 </a>
               )}
               content={() => this.componentRef}
-            />}
+            />} */}
         </SimpleCard>
         {this.state.OpenTheCard == true &&
           <Card style={{ marginTop: "10px", paddingBottom: "30px" }}>
