@@ -18,6 +18,7 @@ import DhanReportReducer from './DhanReportReducer'
 import UserDetailsReportReducer from './UserDetailsReportReducer'
 import UploadFileReducer from './UploadFileReducer';
 import CouponReducer from "./CouponReducer";
+import ReportSubscriptReducer from "./ReportSubScriptReducer";
 const RootReducer = combineReducers({
     notifications: NotificationReducer,
     navigations: NavigationReducer,
@@ -37,6 +38,7 @@ const RootReducer = combineReducers({
     UserDetailsReportReducer: UserDetailsReportReducer,
     UploadFileReducer: UploadFileReducer,
     CouponReducer:CouponReducer,
+    ReportSubscriptReducer:ReportSubscriptReducer,
 })
 
 export default RootReducer

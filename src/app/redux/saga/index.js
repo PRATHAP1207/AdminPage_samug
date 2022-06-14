@@ -11,6 +11,7 @@ import dhanTypeSaga from './DhanTypeSaga'
 import samugFileSaga from './SamugFileSaga'
 import UserReportSaga from './UserReportSaga';
 import CouponSaga from "./CouponSaga";
+import ReportSubscribeSaga from "./ReportSubscribeSaga";
 export default function* rootSaga(getState) {
     yield all([
         authSagas(),
@@ -25,5 +26,6 @@ export default function* rootSaga(getState) {
         samugFileSaga(),
         UserReportSaga(),
         CouponSaga(),
+        ReportSubscribeSaga(),
     ])
 }

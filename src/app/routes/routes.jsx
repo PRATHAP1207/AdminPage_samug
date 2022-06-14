@@ -25,8 +25,10 @@ import PrintOutDhanSwipe from 'app/views/DhanType/PrintOutDhanSwipe';
 import PrintTableUserLogin from 'app/views/SamugLoginDetailsReport/PrintTableUserLogin'
 import UserLoginDetailRoutes from "app/views/SamugLoginDetailsReport/UserLoginDetailRoutes";
 import CouponRoutes from "app/views/CouponCardDetails/CouponRoutes";
+import ReportRoutes from "app/views/Reports/ReportsRoutes";
 import TableLink from 'app/views/ReportDhan/TableLink';
-import TableLinkCurrency from 'app/views/Currency/TableLinkCurrency'
+import TableLinkCurrency from 'app/views/Currency/TableLinkCurrency';
+import GetNewData from 'app/views/Reports/GetNewData';
 
 export const AllPages = () => {
     const all_routes = [
@@ -53,6 +55,7 @@ export const AllPages = () => {
                 ...MessagesRoutes,
                 ...UserLoginDetailRoutes,
                 ...CouponRoutes,
+                ...ReportRoutes
             ],
         },
         ...sessionRoutes,
@@ -100,7 +103,11 @@ export const AllPages = () => {
     },  {
       path: '/TableLinkCurrency',
     element:<TableLinkCurrency/>
-  }
+  },
+  {
+    path: 'Reports/GetNewData',
+  element:<GetNewData/>
+}
         /* {
             path: '/demoo/demo',
             element: <Demo />,

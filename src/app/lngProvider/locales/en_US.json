@@ -21,6 +21,7 @@
     "title.dhanGenerationType":"Dhan Generation Type",
     "title.samugUserLoginDetails":"Samug Login Users details",
     "title.couponTableList":"Coupon Table List",
+    "title.SubscriptionReport":"Subscription Report",
     "title.couponForm":"Coupon Form",
     "title.active": "Active",
     "title.inactive": "InActive",
@@ -76,6 +77,7 @@
     "label.employeeId": "Employee Id",
     "label.image": "Image",
     "label.employeeEdit": "Employee Edit",
+    "label.Date" :"Date",
     "label.deleteEmployee": "Employee Delete",
     "label.roles": "Roles",
     "label.roleName": "Roles",
@@ -98,6 +100,7 @@
     "button.search": "Search",
     "button.send":"Send",
     "button.submit":"Submit",
+    "button.getReport":"Get Report",
 
     "error.EMAILIDFORMAT_ERROR": "Invalid Email ID"
 }

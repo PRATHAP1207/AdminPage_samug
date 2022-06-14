@@ -107,6 +107,27 @@ export const navigations = [
             },
         ],
     },
+//Reports Page
+{
+    name: 'Reports',
+    icon: 'report',
+  //  subMenu: '1',
+   // menuUid: 'A',
+    children: [
+        {
+            name: 'Subscription Report',
+            path: 'Reports/SubscriptReport',
+            //   iconText: "B",
+          //  menuId: '1',
+        }
+        // {
+        //     name: 'Coupon Table List',
+        //     path: '/CouponTableList',
+        //     //  iconText: "E",
+        //  //   menuId: '2',
+        // },
+    ],
+},
 
     //moderator
     {

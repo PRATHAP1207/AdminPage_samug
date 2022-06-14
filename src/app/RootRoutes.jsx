@@ -17,6 +17,7 @@ import reportDhanRoutes from './views/ReportDhan/reportDhanRoutes'
 import CurrencyRoutes from './views/Currency/CurrencyRoutes'
 import DhanSwipeRoutes from './views/DhanType/DhanSwipeRoutes';
 import CouponRoutes from "./views/CouponCardDetails/CouponRoutes";
+import ReportRoutes from "./views/Reports/ReportsRoutes";
 import UserLoginDetailRoutes from "./views/SamugLoginDetailsReport/UserLoginDetailRoutes"
 const redirectRoute = [
     {
@@ -54,6 +55,7 @@ const routes = [
     ...DhanSwipeRoutes,
     ...UserLoginDetailRoutes,
     ...CouponRoutes,
+    ...ReportRoutes,
 ]
 
 export default routes

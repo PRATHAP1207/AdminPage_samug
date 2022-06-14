@@ -301,3 +301,7 @@ export const couponConstant={
 
 
 }
+export const reportSubscript= {
+    INPUT_CHANGE_SUBSCRIBE:"INPUT_CHANGE_SUBSCRIBE",
+    GET_SUBSCRIBE_LIST_SHOW:"GET_SUBSCRIBE_LIST_SHOW",
+}

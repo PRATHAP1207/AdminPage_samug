@@ -6,11 +6,13 @@ import { SimpleCard } from 'matx'
 import MaterialTable from 'material-table'
 import { Icon } from '@mui/material'
 import { confirmAlert } from 'react-confirm-alert'
-import 'react-confirm-alert/src/react-confirm-alert.css'
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import Multiselect from 'multiselect-react-dropdown';
 import {
     TextField,
     FormControl,
     FormLabel,
+    InputLabel,
     Grid,
     Button,
     Box,
@@ -23,17 +25,18 @@ import {
 } from '../../constant/Common'
 import AdapterDateFns from '@mui/lab/AdapterDateFns'
 import { DesktopDatePicker, LocalizationProvider } from '@mui/lab'
-import { useDispatch, useSelector, batch } from 'react-redux'
-import { couponAction } from '../../redux/actions/CouponAction'
-import { getCountryCurrency } from '../../redux/actions/CurrencyReportAction'
+import { useDispatch, useSelector, batch } from 'react-redux';
+import { reportSubscriptAction } from 'app/redux/actions/ReportSubScriptAction'
+// import { couponAction } from '../../redux/actions/CouponAction'
+ import { getCountryCurrency } from '../../redux/actions/CurrencyReportAction'
 
-export default function CouponTableList() {
+export default function SubscriptionReport() {
     const dispatch = useDispatch()
     const CountryInputList = useSelector((state) => state.CurrencyReportReducer)
-    const CouponReducer = useSelector((state) => state.CouponReducer)
+    const reportSubscribe = useSelector((state) => state.ReportSubscriptReducer)
 
     useEffect(() => {
-        dispatch(couponAction.getEmptyCouponList());
+      //  dispatch(couponAction.getEmptyCouponList());
         dispatch(getCountryCurrency(CountryInputList))
     }, [dispatch])
 
@@ -61,8 +64,8 @@ export default function CouponTableList() {
             ],
         })
     }
-    const handelEvent = () => {
-        dispatch(couponAction.getCouponList(CouponReducer))
+    const handleGetReport = () => {
+        dispatch(reportSubscriptAction.getSubscribedList(reportSubscribe))
     }
    const column= [
       { title: 'Sno', render: (rowData) => rowData.tableData.id + 1  },
@@ -76,26 +79,30 @@ export default function CouponTableList() {
       { title: 'Start-Date', field: 'startDate' },
       { title: 'End-Date', field: 'endDate' },
   ]
-     const data=CouponReducer.couponListData  && CouponReducer.couponListData.map((item)=>(
-      {
-        country:item.countryId,
-        couponValue:  item.couponAmount != 0 ?  item.couponAmount : item.couponPercentage + "%",
-        couponMode:item.couponMode == 1 ? "Subscribe" : item.couponMode == 2 ? "Currency" : "Amount" ,
-        discountType:item.discountType == 1 ? "Percentage" : "Amount",
-        couponCode:item.coupon,
-        maxCount:item.maxCount,
-        startDate: dateFormat(item.startDate),
-        endDate:  dateFormat(item.endDate),
+  const data=[{'country' : " India"}];
+    //  const data=CouponReducer.couponListData  && CouponReducer.couponListData.map((item)=>(
+    //   {
+    //     country:item.countryId,
+    //     couponValue:  item.couponAmount != 0 ?  item.couponAmount : item.couponPercentage + "%",
+    //     couponMode:item.couponMode == 1 ? "Subscribe" : item.couponMode == 2 ? "Currency" : "Amount" ,
+    //     discountType:item.discountType == 1 ? "Percentage" : "Amount",
+    //     couponCode:item.coupon,
+    //     maxCount:item.maxCount,
+    //     startDate: dateFormat(item.startDate),
+    //     endDate:  dateFormat(item.endDate),
   
-      }
-    ))
+    //   }
+    // ))
+    const reportTypes = [
+      { name: 'By Datewise', id: 1 },
+      { name: 'By LastDate', id: 2 },
+  ]
 
-    function dateFormat(date){
-        const newDate = new Date(date);
-        //console.log(newDate.toLocaleDateString());
-        // return newDate.toLocaleDateString();
-        return Moment(newDate).format("DD-MM-YYYY");
-    }
+ const reportTypeDropDown = [
+    { value: '1', label: 'Subscribed' },
+    { value: '2', label: 'Dhan notGenerated' },
+    { value: '3', label: 'Top DhanGenerated' },
+]
     return (
         <Container>
             <div className="breadcrumb">
@@ -103,7 +110,7 @@ export default function CouponTableList() {
                     routeSegments={[
                         // { name: 'Home', path: '/' },
                         {
-                            name: <IntlMessages id="title.couponTableList" />,
+                            name: <IntlMessages id="title.SubscriptionReport" />,
                         },
                     ]}
                 />
@@ -121,7 +128,7 @@ export default function CouponTableList() {
                             style={{ marginBottom: '5px', width: '100%' }}
                             onChange={(value) => {
                                 dispatch(
-                                    couponAction.couponInputChange({
+                                  reportSubscriptAction.reportSubscriptInputChange({
                                         prop: 'countryIdList',
                                         value: value.target.value,
                                         error: 'countryIdListError',
@@ -131,11 +138,12 @@ export default function CouponTableList() {
                             required
                             select
                             SelectProps={{ native: true }}
-                            value={CouponReducer.countryIdList}
+                           value={reportSubscribe.countryIdList}
                             variant="outlined"
                         >
+                           
                             {CountryInputList.countryList.map((option) => (
-                                option.id != 0 &&
+                                // option.id != 0 &&
                                 <option key={option.id} value={option.id}>
                                     {option.name}
                                 </option>
@@ -144,11 +152,48 @@ export default function CouponTableList() {
                         </TextField>
                     </Grid>
                     <Grid item xs style={{ margin: '15px' }}>
+                        <TextField
+                            size="small"
+                            fullWidth={true}
+                            InputLabelProps={{ shrink: true }}
+                            label={<IntlMessages id="option" />}
+                            name="option"
+                            className="mb-4"
+                            style={{ marginBottom: '5px', width: '100%' }}
+                            onChange={(value) => {
+                                dispatch(
+                                  reportSubscriptAction.reportSubscriptInputChange({
+                                        prop: 'optionChange',
+                                        value: value.target.value,
+                                        error: 'optionChangeError',
+                                    })
+                                )
+                            }}
+                           
+                            select
+                            SelectProps={{ native: true }}
+                           value={reportSubscribe.optionChange}
+                            variant="outlined"
+                        >
+                           <option value="">
+                                    Select Any
+                                </option>
+                            {reportTypes.map((option) => (
+                                // option.id != 0 &&
+                                <option key={option.id} value={option.id}>
+                                    {option.name}
+                                </option>
+                                
+                            ))}
+                        </TextField>
+                    </Grid>
+                    { reportSubscribe.optionChange != "" && 
+                    <Grid item xs style={{ margin: '15px' }}>
                         <LocalizationProvider dateAdapter={AdapterDateFns}>
                             <DesktopDatePicker
                                 className=" w-full"
-                                label={<IntlMessages id="label.startDate" />}
-                                value={CouponReducer.startDateList}
+                                label={reportSubscribe.optionChange == "2" ? <IntlMessages id="label.Date" />    : <IntlMessages id="label.startDate" />}
+                                value={reportSubscribe.startDateList}
                                 inputVariant="standard"
                                 margin="normal"
                                 renderInput={(params) => (
@@ -164,7 +209,7 @@ export default function CouponTableList() {
                                 placeholder="01-01-2020"
                                 onChange={(date) => {
                                     dispatch(
-                                        couponAction.couponInputChange({
+                                      reportSubscriptAction.reportSubscriptInputChange({
                                             prop: 'startDateList',
                                             value: date,
                                             error: 'startDateListError',
@@ -176,13 +221,14 @@ export default function CouponTableList() {
                                 inputFormat="dd/MM/yyyy"
                             />
                         </LocalizationProvider>
-                    </Grid>
+                    </Grid> }
+                    { reportSubscribe.optionChange == "1" && 
                     <Grid item xs style={{ margin: '15px' }}>
                         <LocalizationProvider dateAdapter={AdapterDateFns}>
                             <DesktopDatePicker
                                 className=" w-full"
                                 label={<IntlMessages id="label.endDate" />}
-                                value={CouponReducer.endDateList}
+                               value={reportSubscribe.endDateList}
                                 inputVariant="standard"
                                 margin="normal"
                                 renderInput={(params) => (
@@ -198,7 +244,7 @@ export default function CouponTableList() {
                                 placeholder="01-01-2020"
                                 onChange={(date) => {
                                     dispatch(
-                                        couponAction.couponInputChange({
+                                      reportSubscriptAction.reportSubscriptInputChange({
                                             prop: 'endDateList',
                                             value: date,
                                             error: 'endDateListError',
@@ -210,9 +256,9 @@ export default function CouponTableList() {
                                 inputFormat="dd/MM/yyyy"
                             />
                         </LocalizationProvider>
-                    </Grid>
+                    </Grid> }
                 </Grid>
-                <Grid container spacing={6}>
+                <Grid container spacing={6} style={{marginBottom:"50px"}}>
                     <Grid item lg={6} md={6} sm={12} xs={12}>
                         <FormControl
                             className="mb-4"
@@ -220,23 +266,23 @@ export default function CouponTableList() {
                             style={{ marginLeft: '30px' }}
                         >
                             <FormLabel>
-                                <IntlMessages id="label.status" />
+                                <IntlMessages id="label.reportType" />
                             </FormLabel>
                             <Select
                                 className="mb-4 ml-3 w-full selectCustom"
-                                options={defaultStatusArray}
-                                value={defaultStatusArray.filter((val) => {
+                                options={reportTypeDropDown}
+                                value={reportTypeDropDown.filter((val) => {
                                     return (
-                                        val.value == CouponReducer.statusChange
+                                        val.value == reportSubscribe.reportTypeStatusChange
                                     )
                                 })}
-                                //   value={CouponReducer.statusChange}
+                                //  value={CouponReducer.statusChange}
                                 onChange={(value) => {
                                     dispatch(
-                                        couponAction.couponInputChange({
-                                            prop: 'statusChange',
+                                      reportSubscriptAction.reportSubscriptInputChange({
+                                            prop: 'reportTypeStatusChange',
                                             value: value.value,
-                                            error: 'statusChangeError',
+                                            error: 'reportTypeStatusChangeError',
                                         })
                                     )
                                 }}
@@ -255,18 +301,23 @@ export default function CouponTableList() {
                             variant="contained"
                             color="primary"
                             style={{ marginTop: '52px', marginLeft: '40px' }}
-                            onClick={handelEvent}
+                           onClick={handleGetReport}
                         >
                             <i className="zmdi zmdi-search zmdi-hc-fw" />
                             <span>
-                                <IntlMessages id="button.search" />
+                                <IntlMessages id="button.getReport" />
                             </span>
                         </Button>
                     </Box>
                 </Grid>
                 <MaterialTable
+                  onRowClick={(event, rowData) => {
+                    console.log(rowData);
+                    window.open("GetNewData", "_blank")
+                    //event.stopPropagation();
+                  }}
                     style={{ paddingLeft: '15px' }}
-                    title="Coupon Details"
+                    title="Subscription Report"
                     columns={column}
                     data={data}
                     actions={[
