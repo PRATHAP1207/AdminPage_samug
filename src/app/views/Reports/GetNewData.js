@@ -26,16 +26,7 @@ export default function GetNewData() {
   const data=[{'country' : " India"},
   {'country' : " India"},
   {'country' : " India"},
-  {'country' : " India"},
-  {'country' : " India"},
-  {'country' : " India"},
-  {'country' : " Invdvvsdvvsdvsdvdvvddvdvdvfgbgnynyntbgbgbbgbgbbgbgbgbgbgbgbgbgbgbgbgbgfbgbfbfbbbfgbfgbdia"},
-  {'country' : " India"},
-  {'country' : " India"},
-  {'country' : " India"}
-,{'country' : " India"}
-,{'country' : " India"}
-,{'country' : " India"}];
+  {'country' : " India"}];
     //  const data=CouponReducer.couponListData  && CouponReducer.couponListData.map((item)=>(
     //   {
     //     country:item.countryId,
