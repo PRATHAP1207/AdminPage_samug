@@ -98,11 +98,11 @@ class NewEmployee extends Component {
         // }
     }
     showError(error) {
-        return error.trim() === '' ? '' : <IntlMessages id={error} />
+        return error === '' ? '' : <IntlMessages id={error} />
     }
 
     showPlaceHolder(label) {
-        return label.trim() === '' ? '' : <IntlMessages id={label} />
+       // return label.trim() === '' ? '' : <IntlMessages id={label} />
     }
     numberkeyPressed(evt) {
         var charCode = evt.which ? evt.which : evt.keyCode
@@ -215,7 +215,7 @@ class NewEmployee extends Component {
                                 }
                             />
                             <div className="mb-2 form_error">
-                                {this.showError(this.props.employeeNameError)}
+                                {this.props.employeeNameError}
                             </div>
 
                             <TextField
@@ -245,7 +245,7 @@ class NewEmployee extends Component {
                                 ))}
                             </TextField>
                             <div className="mb-2 form_error">
-                                {this.showError(this.props.designationIdError)}
+                                {this.props.designationIdError}
                             </div>
                             <TextField
                                 required
@@ -268,7 +268,7 @@ class NewEmployee extends Component {
                             />
 
                             <div className="mb-2 form_error">
-                                {this.showError(this.props.contactNoError)}
+                                {this.props.contactNoError}
                             </div>
                             <TextField
                                 required
@@ -290,7 +290,7 @@ class NewEmployee extends Component {
                                 }
                             />
                             <div className="mb-2 form_error">
-                                {this.showError(this.props.contactNoError)}
+                                {this.props.contactNoError}
                             </div>
 
                             <TextField
@@ -324,7 +324,7 @@ class NewEmployee extends Component {
                                 }
                             />
                             <div className="mb-2 form_error">
-                                {this.showError(this.props.emailIdError)}
+                                {(this.props.emailIdError)}
                             </div>
                             <FormControl
                                 component="fieldset"
@@ -367,7 +367,7 @@ class NewEmployee extends Component {
                                 </RadioGroup>
                             </FormControl>
                             <div className="mb-2 form_error">
-                                {this.showError(this.props.genderError)}
+                                {(this.props.genderError)}
                             </div>
                             <LocalizationProvider dateAdapter={AdapterDateFns}>
                                 <DesktopDatePicker
@@ -442,7 +442,7 @@ class NewEmployee extends Component {
                                 }
                             />
                             <div className="mb-2 form_error">
-                                {this.showError(this.props.address1Error)}
+                                {(this.props.address1Error)}
                             </div>
                             <TextField
                                 required
@@ -463,7 +463,7 @@ class NewEmployee extends Component {
                                 }
                             />
                             <div className="mb-2 form_error">
-                                {this.showError(this.props.address2Error)}
+                                {(this.props.address2Error)}
                             </div>
                             <TextField
                                 fullWidth
@@ -495,7 +495,7 @@ class NewEmployee extends Component {
                                 ))}
                             </TextField>
                             <div className="mb-2 form_error">
-                                {this.showError(this.props.countryIdError)}
+                                {(this.props.countryIdError)}
                             </div>
                             <TextField
                                 InputLabelProps={{ shrink: true }}
@@ -528,7 +528,7 @@ class NewEmployee extends Component {
                                 ))}
                             </TextField>
                             <div className="mb-2 form_error">
-                                {this.showError(this.props.stateIdError)}
+                                {(this.props.stateIdError)}
                             </div>
                             <TextField
                                 InputLabelProps={{ shrink: true }}
@@ -557,7 +557,7 @@ class NewEmployee extends Component {
                                 ))}
                             </TextField>
                             <div className="mb-2 form_error">
-                                {this.showError(this.props.cityIdError)}
+                                {(this.props.cityIdError)}
                             </div>
                             <TextField
                                 required
@@ -579,7 +579,7 @@ class NewEmployee extends Component {
                                 }
                             />
                             <div className="mb-2 form_error">
-                                {this.showError(this.props.pincodeError)}
+                                {(this.props.pincodeError)}
                             </div>
                             <TextField
                                 fullWidth
@@ -610,7 +610,7 @@ class NewEmployee extends Component {
                                 ))}
                             </TextField>
                             <div className="mb-2 form_error">
-                                {this.showError(this.props.accessCountryError)}
+                                {(this.props.accessCountryError)}
                             </div>
                             <label htmlFor="phoneNumber">
                                 {<IntlMessages id="label.preview" />}
@@ -739,7 +739,7 @@ class NewEmployee extends Component {
                                         ))}
                                     </TextField>
                                     <div className="mb-2 form_error">
-                                        {this.showError(this.props.roleIdError)}
+                                        {(this.props.roleIdError)}
                                     </div>
                                 </FormControl>
                             </Grid>

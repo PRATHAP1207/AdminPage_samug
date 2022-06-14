@@ -39,18 +39,18 @@ class EmployeeList extends Component {
   componentDidMount() {
     this.props.employeeDataReset();
   }
-  handleChange(event) {
+  handleChange=(event)=> {
     this.setState({ remarks: event.target.value });
     //console.log(this.state.remarks);
   }
-  handelEvent(e) {
+  handelEvent=(e)=> {
     e.preventDefault();
     this.props.empListValidate(this.props);
   };
-  onEditEmployee(e) {
+  onEditEmployee=(e)=> {
     this.props.getEmployeeEdit(e);
      }
-  onDeleteEmployee(e) {
+  onDeleteEmployee=(e)=> {
     //this.setState({ open: true });
     confirmAlert({
       title: "Employee Active InActive",

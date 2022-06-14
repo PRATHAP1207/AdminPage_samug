@@ -143,7 +143,11 @@ export default function SubscriptionReport() {
                         >
                            
                             {CountryInputList.countryList.map((option) => (
-                                // option.id != 0 &&
+                             option.id == 101 &&
+                             <option key={option.id} value={option.id}>
+                               {option.name}
+                           </option>,
+                                option.id != 0 &&
                                 <option key={option.id} value={option.id}>
                                     {option.name}
                                 </option>
