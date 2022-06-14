@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i");
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+#app-site {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+.loader{
+    position: fixed;
+    z-index: 100;
+    cursor: progress;
+    /* background-color: rgba(60, 138, 255, 0.1); */
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    background-repeat: no-repeat;
+    /* opacity: 0.8; */
+    background-position: center;
+}
+
+.loader1 {
+    position: fixed;
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: progress; /* Add a pointer on hover */
+    /*margin: 0 auto;
+    width: 60px;
+    height: 100%;*/
+    
+   /* background-color: rgba(60, 138, 255, 0.1);*/
+   
+}
+.loadCenter {
+    position: fixed; /* Sit on top of the page content */
+    display: block; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(60, 138, 255, 0.1); /* Black background with opacity */
+    opacity: 0.5;
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: progress; /* Add a pointer on hover */
+}
+.loader:before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+.circular {
+    animation: rotate 2s linear infinite;
+    -webkit-animation: rotate 2s linear infinite;
+    height: auto;
+    transform-origin: center center;
+    -webkit-transform-origin: center center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.path {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+    -webkit-animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+    stroke-linecap: round;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
+    }
+    100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
+    }
+}
+
+@keyframes color {
+    100%,
+    0% {
+        stroke: #d62d20;
+    }
+    40% {
+        stroke: #0057e7;
+    }
+    66% {
+        stroke: #008744;
+    }
+    80%,
+    90% {
+        stroke: #ffa700;
+    }
+}
+
+@-webkit-keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
+    }
+    100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
+    }
+}
+
+@-webkit-keyframes color {
+    100%,
+    0% {
+        stroke: #d62d20;
+    }
+    40% {
+        stroke: #0057e7;
+    }
+    66% {
+        stroke: #008744;
+    }
+    80%,
+    90% {
+        stroke: #ffa700;
+    }
+}
+
+/*# sourceMappingURL=loader.css.map */
